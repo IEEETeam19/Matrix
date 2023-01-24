@@ -1,6 +1,5 @@
 <script>
 
-    import {array} from "../stores/data.js"
     import {OutputArr, flag} from "../stores/outputData.js"
     
     var nums, row, col, snum, lnum;
@@ -9,68 +8,91 @@
     
     const option1 = ()=>{
 
-    let outArr = [];
-    let rows = 6;
-    let columns = 6;
-    let min = snum;
-    let max = lnum;
+    let matrix = [];
+  let min = snum;
+  let max = lnum;
+  let rows = row;
+  let cols = col;
 
-    function createMatrix() {
-        outArr = [];
-        for (let i = 0; i < rows; i++) {
-            outArr[i] = [];
-            for (let j = 0; j < columns; j++) {
-                outArr[i][j] = Math.floor(Math.random() * (max - min + 1) + min);
-            }
-        }
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function createMatrix() {
+    for (let i = 0; i < rows; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < cols; j++) {
+        matrix[i][j] = getRandomInt(min, max);
+      }
     }
-    createMatrix();
-    OutputArr.set(outArr);
+  }
+
+  createMatrix();
+    OutputArr.set(matrix);
     flag.set(1);
 
     }
 
     const option2 = ()=>{
      
-    let outArr = [];
-    let rows = row;
-    let columns = col;
-    let min = snum;
-    let max = lnum;
-    outArr = new Array(rows);
-        for (let i = 0; i < rows; i++) {
-            outArr[i] = new Array(columns);
-            for (let j = 0; j < columns; j++) {
-                if(i === j) {
-                    outArr[i][j] = Math.floor(Math.random() * (max - min + 1) + min);
-                } else {
-                    outArr[i][j] = 0;
-                }
-            }
-        }
+    let matrix = [];
+  let min = snum;
+  let max = lnum;
+  let size = row;
 
-        OutputArr.set(outArr);
-        flag.set(1);
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function createMatrix() {
+    for (let i = 0; i < size; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < size; j++) {
+        if (i === j) {
+          matrix[i][j] = getRandomInt(min, max);
+        } else {
+          matrix[i][j] = 0;
+        }
+      }
+    }
+  }
+    createMatrix();
+    OutputArr.set(matrix);
+    flag.set(1);
     }
 
     const option3 = ()=> {
         
-    let outArr = [];
-    let rows = row;
-    let min = snum;
-    let max = lnum;
-    outArr = new Array(rows);
-        for (let i = 0; i < rows; i++) {
-            outArr[i] = new Array(rows);
-            for (let j = 0; j < rows; j++) {
-                if (i <= j) {
-                    outArr[i][j] = Math.floor(Math.random() * (max - min + 1) + min);
-                } else {
-                    outArr[i][j] = outArr[j][i];
-                }
-            }
+        let matrix = [];
+  let min = snum;
+  let max = lnum;
+  let size = row;
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function createMatrix() {
+    for (let i = 0; i < size; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < size; j++) {
+        if (i >= j) {
+          matrix[i][j] = getRandomInt(min, max);
+        } else {
+          matrix[i][j] = 0;
         }
-        OutputArr.set(outArr);
+      }
+    }
+  }
+  createMatrix();
+        createMatrix();
+        OutputArr.set(matrix);
         flag.set(1);
     }
 </script>
@@ -100,7 +122,7 @@
 
         <div class="items-center mx-10">
             <button class="bg-teal-900 w-full text-xs" on:click={option3}>
-                Random diagonal matrix
+                Random right triangular matrix
             </button>
         </div>
 
