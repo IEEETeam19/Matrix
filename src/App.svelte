@@ -4,7 +4,6 @@
   import Box3 from "./lib/box3_R.svelte";
   import {array} from "../src/stores/data.js";
   import {OutputArr, flag} from "../src/stores/outputData.js";
-  import Box2 from "./lib/box2_R.svelte";
   import { each } from "svelte/internal";
 
   let matrix = [];
