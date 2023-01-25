@@ -2,73 +2,21 @@
 
   import Box1 from "./lib/box1_R.svelte";
   import Box3 from "./lib/box3_R.svelte";
-  import {array} from "../src/stores/data.js";
   import {OutputArr, flag} from "../src/stores/outputData.js";
-  import { each } from "svelte/internal";
 
-  let matrix = [];
-  let row = [];
-  let inputIndex = 0;
-  let rowIndex = 0;
+  /*let matrix = [[]];
+  let currentRow = 0;
 
-  function handleKeyPress(event) {
-    if (event.keyCode === 13) {
-      matrix[rowIndex] = row;
-      row = [];
-      rowIndex++;
+  function handleEnter(event) {
+    if (event.key === "Enter") {
+      currentRow++;
+      matrix.push([]);
     }
   }
 
-  function addToMatrix(event) {
-    let input = event.target;
-    row.push(parseInt(input.value));
-  }
-
-  let arr = []; 
-  export let a2 = [];
-  a2 = $OutputArr;
-  var a;
-  var l = []; 
-  
-  const num = (event)=>{
-    if(event.keyCode === 13)
-    {
-      a = event.target.value;
-      l = [...l, a];
-    }
-  }
-  
-  // '349', '349\n3', '349\n3\n8', '349\n3\n8\n4', '349\n3\n8\n4\n89'
-  const inputTake = function NL()
-  {
-    arr = [];
-    var i,j,ind;
-    i=j=0;
-    var str="z";
-
-    for(; i<l.length; i++)
-    {
-      var value;
-      if(i == 0)
-        value = parseInt(l[i], 10);
-
-      else if(i > 0)
-      {
-        ind = l[i].lastIndexOf('\n');
-        var strR = l[i].substring(ind+1);
-        value = parseInt(strR, 10);
-      }
-      arr = [...arr, value]; 
-    }
-  
-    array.set(arr);
-
-    // console.log(arr);
-    console.log("Actual Array: "+$array);
-
-  }
-
-  // document.getElementById("Op").innerHTML = "<p>Hello</p>";
+  function handleInput(event) {
+    matrix[currentRow].push(event.target.value);
+  }*/
   
 </script>
 
@@ -81,17 +29,17 @@
   <div class="text-white"> 
     </div>
     <div class="flex center-contents justify-evenly">
-        <div class="text-teal-700 mx-20 text-center my-4">
+        <!--<div class="text-teal-700 mx-20 text-center my-4">
             <p class="font-bold">INPUT</p>
-            <!--<input type="number" id="input" placeholder="Enter matrix element">-->
+            <input type="number" id="input" placeholder="Enter matrix element">
             
 
-            <textarea class="text-white bg-teal-600 w-96 h-72" name="" id="input" cols="30" rows="10" on:keydown={handleKeyPress} on:input={addToMatrix}></textarea>
-            <!---->
+            <textarea class="text-white bg-teal-600 w-96 h-72" name="" id="input" cols="30" rows="10" on:keydown={handleEnter}></textarea>
+            
             <div>
-            <button on:click={inputTake} class="bg-teal-700 text-white rounded border-2 m-1 p-1 hover:bg-teal-900">SUBMIT</button>
+            <button on:click={handleInput} class="bg-teal-700 text-white rounded border-2 m-1 p-1 hover:bg-teal-900">SUBMIT</button>
             </div>
-        </div>
+        </div>-->
         <div class="text-teal-700 mx-20 text-center my-4">
             <p class="font-bold">OUTPUT</p>
             <div class="bg-teal-600 w-96 h-72 text-white" id="Op">
