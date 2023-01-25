@@ -108,7 +108,7 @@
 
   <div class="flex content-center mx-3 justify-evenly">
     <Box1/>
-    <Box2/>
+    <!--<Box2/>-->
     <Box3/>
   </div>
   <div class="text-center text-teal-800 font-bold">
